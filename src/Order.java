@@ -1,10 +1,12 @@
 public class Order {
     private final int amount;
     private final double unitPrice;
+    private double taxRate;
 
-    public Order(int amount, double unitPrice) {
+    public Order(int amount, double unitPrice, double taxRate) {
         this.amount = amount;
         this.unitPrice = unitPrice;
+        this.taxRate = taxRate;
     }
 
     public double total() {

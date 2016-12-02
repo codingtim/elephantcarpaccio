@@ -15,10 +15,10 @@ public class Main {
         int amount = readInt("Amount", 0, Integer.MAX_VALUE, scanner);
         double unitPrice = readDouble("Unit price", 0, Integer.MAX_VALUE, scanner);
         LivingState livingState = readEnum("State", scanner);
-        Order order = new Order(amount, unitPrice);
+        Order order = new Order(amount, unitPrice, livingState.getTaxRate());
 
         System.out.println("#\t$\tstate\tdiscount\ttax\tprice");
-        System.out.println("1\t" + order.getUnitPrice() +"\t"+ livingState +"\t-\t-\t" + order.total());
+        System.out.println("1\t" + order.getUnitPrice() +"\t"+ livingState +"\t-\t" + livingState.getTaxRate() + "\t" + order.total());
     }
 
     private LivingState readEnum(String field, Scanner scanner) {
