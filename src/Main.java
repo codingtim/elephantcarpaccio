@@ -26,8 +26,7 @@ public class Main {
         System.out.println("Enter your " + field);
         String line = scanner.nextLine();
         try {
-            LivingState livingState = LivingState.valueOf(line);
-            return livingState;
+            return LivingState.valueOf(line);
         } catch (IllegalArgumentException e) {
             System.out.println("Invalid state given, valid values: " + LivingState.printValues());
             return readEnum(field, scanner);
@@ -41,12 +40,12 @@ public class Main {
             int number = Integer.parseInt(line);
             if(number < minValue || number > maxValue) {
                 System.out.println("Invalid input, expected number >= " + minValue + " and <= " + maxValue);
-                return readInt("Unit price", minValue, maxValue, scanner);
+                return readInt(field, minValue, maxValue, scanner);
             }
             return number;
         } catch (NumberFormatException e) {
             System.out.println("Invalid input, expected number >= " + minValue + " and <= " + maxValue);
-            return readInt("Unit price", minValue, maxValue, scanner);
+            return readInt(field, minValue, maxValue, scanner);
         }
 
     }
@@ -58,12 +57,12 @@ public class Main {
             double number = Double.parseDouble(line);
             if(number < minValue || number > maxValue) {
                 System.out.println("Invalid input, expected number >= " + minValue + " and <= " + maxValue);
-                return readDouble("Unit price", minValue, maxValue, scanner);
+                return readDouble(field, minValue, maxValue, scanner);
             }
             return number;
         } catch (NumberFormatException e) {
             System.out.println("Invalid input, expected number >= " + minValue + " and <= " + maxValue);
-            return readDouble("Unit price", minValue, maxValue, scanner);
+            return readDouble(field, minValue, maxValue, scanner);
         }
     }
 }
