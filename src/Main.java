@@ -24,6 +24,7 @@ public class Main {
 
     private LivingState readEnum(String field, Scanner scanner) {
         System.out.println("Enter your " + field);
+        System.out.println("Valid states are: " + LivingState.printValues());
         String line = scanner.nextLine();
         try {
             return LivingState.valueOf(line);
