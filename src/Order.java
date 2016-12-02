@@ -13,6 +13,10 @@ public class Order {
         return unitPrice * amount;
     }
 
+    public double totalWithTax() {
+        return total() * ((100 + taxRate) / 100);
+    }
+
     public int getAmount() {
         return amount;
     }
