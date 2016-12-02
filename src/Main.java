@@ -17,9 +17,9 @@ public class Main {
         LivingState livingState = readEnum("State", scanner);
         Order order = new Order(amount, unitPrice, livingState.getTaxRate());
 
-        System.out.println("#\t$\tstate\tdiscount\ttax\tprice");
+        System.out.println("#\t$\tstate\tdiscount\ttax\ttotal\ttotalWithTax");
         System.out.println(order.getAmount()+"\t" + order.getUnitPrice() +"\t"+ livingState
-                +"\t-\t" + livingState.getTaxRate() + "\t" + order.totalWithTax());
+                +"\t-\t" + livingState.getTaxRate() + "\t" + order.total() +"\t" + order.totalWithTax());
     }
 
     private LivingState readEnum(String field, Scanner scanner) {
