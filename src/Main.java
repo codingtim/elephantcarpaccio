@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -13,10 +14,23 @@ public class Main {
 
         int amount = readInt("Amount", 0, Integer.MAX_VALUE, scanner);
         double unitPrice = readDouble("Unit price", 0, Integer.MAX_VALUE, scanner);
+        LivingState livingState = readEnum("State", scanner);
         Order order = new Order(amount, unitPrice);
 
         System.out.println("#\t$\tstate\tdiscount\ttax\tprice");
-        System.out.println("1\t" + order.getUnitPrice() +"\t-\t-\t-\t" + order.total());
+        System.out.println("1\t" + order.getUnitPrice() +"\t"+ livingState +"\t-\t-\t" + order.total());
+    }
+
+    private LivingState readEnum(String field, Scanner scanner) {
+        System.out.println("Enter your " + field);
+        String line = scanner.nextLine();
+        try {
+            LivingState livingState = LivingState.valueOf(line);
+            return livingState;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid state given, valid values: " + LivingState.printValues());
+            return readEnum(field, scanner);
+        }
     }
 
     private int readInt(String field, int minValue, int maxValue, Scanner scanner) {
