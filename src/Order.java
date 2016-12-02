@@ -1,4 +1,7 @@
 public class Order {
+
+
+
     private final int amount;
     private final double unitPrice;
     private double taxRate;
@@ -10,8 +13,21 @@ public class Order {
     }
 
     public double total() {
-        return unitPrice * amount;
+        double totalWithoutTax = unitPrice * amount;
+        if(totalWithoutTax >= 50000) return totalWithoutTax * 0.85;
+        if(totalWithoutTax >= 10000) return totalWithoutTax * 0.90;
+        if(totalWithoutTax >= 7000) return totalWithoutTax * 0.93;
+        if(totalWithoutTax >= 5000) return totalWithoutTax * 0.95;
+        if(totalWithoutTax >= 1000) return totalWithoutTax * 0.97;
+        return totalWithoutTax;
     }
+
+
+    public double discount() {
+        return (amount * unitPrice) - total();
+    }
+
+
 
     public double totalWithTax() {
         return total() * ((100 + taxRate) / 100);
