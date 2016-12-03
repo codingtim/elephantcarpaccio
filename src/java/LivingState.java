@@ -1,4 +1,4 @@
-import java.util.Arrays;
+package java;
 
 public enum LivingState {
     UT(6.85),
