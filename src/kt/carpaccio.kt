@@ -18,7 +18,7 @@ fun print(order: Order, state: LivingState) {
             .append("Price: ").append(order.price).append("\n")
             .append("State: ").append(state.name).append("\n")
             .append("Discount: ").append("-").append("\n")
-            .append("TaxRate: ").append("-").append("\n")
+            .append("TaxRate: ").append(state.taxRate).append("\n")
             .append("Total: ").append(order.total).append("\n")
     )
 }
