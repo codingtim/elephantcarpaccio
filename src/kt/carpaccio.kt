@@ -54,8 +54,8 @@ data class PercentageDiscount(val percentage: Double) : Discount {
 
 data class Invoice(val order: Order, val state: LivingState, val discount: Discount) {
     val totalDiscount = discount.getDiscount(order.total)
-    val totalWithTax = (order.total - totalDiscount) * (1 + (state.taxRate / 100))
     val total = order.total - totalDiscount
+    val totalWithTax = total * (1 + (state.taxRate / 100))
 }
 
 data class Order(val price: Double, val amount: Int = 1) {
