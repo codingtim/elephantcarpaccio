@@ -36,7 +36,7 @@ fun calculateDiscount(order: Order): Discount {
         order.total in 7000..9999 -> PercentageDiscount(0.07)
         order.total in 5000..6999 -> PercentageDiscount(0.05)
         order.total in 1000..4999 -> PercentageDiscount(0.03)
-        else -> NoDiscount()
+        else -> NoDiscount
     }
 }
 
@@ -44,7 +44,7 @@ interface Discount {
     fun getDiscount(total: Double): Double
 }
 
-data class NoDiscount(val required: Unit = Unit) : Discount {
+object NoDiscount: Discount {
     override fun getDiscount(total: Double): Double = 0.0
 }
 
