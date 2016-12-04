@@ -9,22 +9,22 @@ fun main(args: Array<String>) {
     val price = reader.readDouble("price", 1, Int.MAX_VALUE)
     val amount = reader.readInt("amount", 1, Int.MAX_VALUE)
     val state = reader.readEnum("state")
-    print(OrderWithTax(Order(price, amount), state))
+    print(Invoice(Order(price, amount), state))
 }
 
-fun print(orderWithTax: OrderWithTax) {
+fun print(invoice: Invoice) {
     System.out.println(StringBuilder()
-            .append("Amount: ").append(orderWithTax.order.amount).append("\n")
-            .append("Price: ").append(orderWithTax.order.price).append("\n")
-            .append("State: ").append(orderWithTax.state.name).append("\n")
+            .append("Amount: ").append(invoice.order.amount).append("\n")
+            .append("Price: ").append(invoice.order.price).append("\n")
+            .append("State: ").append(invoice.state.name).append("\n")
             .append("Discount: ").append("-").append("\n")
-            .append("TaxRate: ").append(orderWithTax.state.taxRate).append("%\n")
-            .append("Total: ").append(orderWithTax.order.total).append("\n")
-            .append("TotalWithTax: ").append(orderWithTax.totalWithTax).append("\n")
+            .append("TaxRate: ").append(invoice.state.taxRate).append("%\n")
+            .append("Total: ").append(invoice.order.total).append("\n")
+            .append("TotalWithTax: ").append(invoice.totalWithTax).append("\n")
     )
 }
 
-data class OrderWithTax(val order: Order, val state: LivingState) {
+data class Invoice(val order: Order, val state: LivingState) {
     val totalWithTax = order.total * (1 + (state.taxRate / 100))
 }
 
